@@ -7,6 +7,13 @@ type gridScreenProp = StackNavigationProp<RootStackParamsList, 'PagingGrid'>;
 
 export default function PagingGrid() {
     return <SafeAreaView>
-        <Text>Paging Grid</Text>
+        <Text style={styles.label}>Paging Grid</Text>
     </SafeAreaView>
 }
+
+const styles = StyleSheet.create({
+    label: {
+        fontWeight: 'bold',
+        fontSize: 24,
+    }
+})
