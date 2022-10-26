@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, SafeAreaView, View } from 'react-native';
 import AppButton from '../components/button';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
@@ -14,13 +14,13 @@ export default function Home() {
         <View style={styles.content}>
             <View style={styles.button} >
                 <AppButton title="Pagination List" onPress={() => {
-
+                    navigation.navigate('PagingList');
                 }} />
             </View>
             <SizedBox height={14} />
             <View style={styles.button} >
                 <AppButton title="Pagination Grid" onPress={() => {
-
+                    navigation.navigate('PagingGrid');
                 }} />
             </View>
         </View>
