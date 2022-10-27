@@ -11,16 +11,32 @@ const queryClient = new QueryClient();
 
 export default function PagingList() {
     return <QueryClientProvider client={queryClient}>
-    <SafeAreaView>
-        <View style={styles.containerPaging}>
-            <FlashList 
-                data={[{name: 'tom'}, {name: 'jerry'}]} 
-                renderItem={({item}) => <ItemPost />}
-                estimatedItemSize={100}
-                />
-        </View>
+    <SafeAreaView style={styles.container}>
+        <Content />
     </SafeAreaView>
     </QueryClientProvider>
+}
+
+function Content(): JSX.Element {
+    const {
+        data,
+        error,
+        fetchNextPage,
+        hasNextPage,
+        isFetching,
+        isFetchingNextPage,
+        status,
+    } = UsePosts();
+
+    const flattenData = data?.pages.flatMap(page => page.data);
+
+    return <View style={styles.containerPaging}>
+        <FlashList 
+            data={flattenData}
+            renderItem={({item}) => <ItemPost />}
+            estimatedItemSize={100}
+            />
+    </View>
 }
 
 function ItemPost(): JSX.Element {
@@ -28,10 +44,13 @@ function ItemPost(): JSX.Element {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
     containerPaging: {
         width: Dimensions.get('screen').width,
-        height: 300,
-        backgroundColor: 'yellow',
+        height: Dimensions.get('window').height,
     },
     label: {
         fontWeight: 'bold',
