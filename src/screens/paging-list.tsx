@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlashList } from "@shopify/flash-list";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { StyleSheet, SafeAreaView, Text, View, Dimensions, ActivityIndicator } from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View, ActivityIndicator } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamsList } from './root-stack-params';
 import UsePosts from '../services/list-post-service';
@@ -33,6 +33,12 @@ function Content(): JSX.Element {
 
     const flattenData = data?.pages.flatMap(page => page.data);
 
+    const loadNext = () => {
+        if (hasNextPage) {
+          fetchNextPage();
+        }
+    };
+
     if (status === 'loading') {
         return <Loading />
     }
@@ -42,7 +48,9 @@ function Content(): JSX.Element {
             data={flattenData}
             renderItem={({item}) => <ItemPost {...item} />}
             estimatedItemSize={100}
-            />
+            onEndReached={loadNext}
+            onEndReachedThreshold={0.3}
+        />
     </View>
 }
 
@@ -72,8 +80,7 @@ const styles = StyleSheet.create({
         alignContent: 'center',
     },
     containerPaging: {
-        width: Dimensions.get('screen').width,
-        height: Dimensions.get('window').height,
+        flex: 1,
     },
     containerPost: {
         paddingHorizontal: 12,
