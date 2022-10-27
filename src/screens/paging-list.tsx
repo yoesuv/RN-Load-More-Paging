@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlashList } from "@shopify/flash-list";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { StyleSheet, SafeAreaView, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, SafeAreaView, Text, View, Dimensions, ActivityIndicator } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamsList } from './root-stack-params';
 import UsePosts from '../services/list-post-service';
@@ -30,12 +30,22 @@ function Content(): JSX.Element {
 
     const flattenData = data?.pages.flatMap(page => page.data);
 
+    if (status === 'loading') {
+        return <Loading />
+    }
+
     return <View style={styles.containerPaging}>
         <FlashList 
             data={flattenData}
             renderItem={({item}) => <ItemPost />}
             estimatedItemSize={100}
             />
+    </View>
+}
+
+function Loading(): JSX.Element {
+    return <View style={styles.containerCenter}>
+        <ActivityIndicator size={'large'} />
     </View>
 }
 
@@ -47,6 +57,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
+    },
+    containerCenter: {
+        flex: 1,
+        justifyContent: 'center',
+        alignContent: 'center',
     },
     containerPaging: {
         width: Dimensions.get('screen').width,
