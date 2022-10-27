@@ -27,7 +27,7 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={Home} options={{...baseOptions, title: "Home"}} />
         <Stack.Screen name="PagingList" component={PagingList} options={{...baseOptions, title: "Pagination List"}} />
-        <Stack.Screen name="PagingGrid" component={PagingList} options={{...baseOptions, title: "Pagination Grid"}} />
+        <Stack.Screen name="PagingGrid" component={PagingGrid} options={{...baseOptions, title: "Pagination Grid"}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
