@@ -6,7 +6,7 @@ export const client = Axios.create({
   });
   client.interceptors.request.use((request) => {
     //console.log(`Request # `, JSON.stringify(request, null, 2));
-    console.log(`Request # url `+request.url);
+    console.log(`Request # url `+ request.baseURL + request.url);
     return request;
   });
   client.interceptors.response.use((response) => {

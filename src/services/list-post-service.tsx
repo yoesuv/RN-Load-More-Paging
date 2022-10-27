@@ -1,11 +1,11 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import { PagingPostModel } from '../models/paging-post-model';
 import { PostModel } from '../models/post-model';
+import { client } from './api-service';
 
 // https://jsonplaceholder.typicode.com/posts?_page=1&_limit=20
 const fetchPosts = async ({ pageParam = 0}): Promise<PagingPostModel> => {
-  const result = await axios.get<PostModel[]>('https://jsonplaceholder.typicode.com/posts?_page='+pageParam+'&_limit=20')
+  const result = await client.get<PostModel[]>('posts?_page='+pageParam+'&_limit=20')
   return {
     nextPage: pageParam + 1,
     data: result.data,
