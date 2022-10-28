@@ -5,7 +5,7 @@ import { StyleSheet, SafeAreaView, Text, View, ActivityIndicator } from 'react-n
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamsList } from './root-stack-params';
 import UsePosts from '../services/list-post-service';
-import ItemPostList from './item-post-list';
+import ItemPostGrid from './item-post-grid';
 
 type gridScreenProp = StackNavigationProp<RootStackParamsList, 'PagingGrid'>;
 
@@ -39,7 +39,7 @@ function Content(): JSX.Element {
         <FlashList 
             numColumns={2}
             data={flattenData}
-            renderItem={({item}) => <ItemPostList post={item} /> }
+            renderItem={({item}) => <ItemPostGrid post={item} /> }
             estimatedItemSize={100}
             onEndReachedThreshold={0.3}
         />
