@@ -6,6 +6,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamsList } from './root-stack-params';
 import UsePosts from '../services/list-post-service';
 import ItemPostGrid from './item-post-grid';
+import ItemLoadMore from './item-load-more';
 
 type gridScreenProp = StackNavigationProp<RootStackParamsList, 'PagingGrid'>;
 
@@ -29,7 +30,14 @@ function Content(): JSX.Element {
         isFetchingNextPage,
         status,
     } = UsePosts();
+
     const flattenData = data?.pages.flatMap(page => page.data);
+
+    const loadNext = () => {
+        if (hasNextPage) {
+          fetchNextPage();
+        }
+    };
 
     if (status === 'loading') {
         return <Loading />
@@ -42,6 +50,8 @@ function Content(): JSX.Element {
             renderItem={({item}) => <ItemPostGrid post={item} /> }
             estimatedItemSize={100}
             onEndReachedThreshold={0.3}
+            onEndReached={loadNext}
+            ListFooterComponent={isFetchingNextPage ? < ItemLoadMore /> : null}
         />
     </View>
 }
