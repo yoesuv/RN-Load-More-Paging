@@ -5,9 +5,7 @@ import { StyleSheet, SafeAreaView, Text, View, ActivityIndicator } from 'react-n
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamsList } from './root-stack-params';
 import UsePosts from '../services/list-post-service';
-import SizedBox from '../components/sized-box';
-import { PostModel } from '../models/post-model';
-import { GREY_300 } from '../data/colors';
+import ItemPostList from './item-post-list';
 
 type listScreenProp = StackNavigationProp<RootStackParamsList, 'PagingList'>;
 const queryClient = new QueryClient();
@@ -46,7 +44,7 @@ function Content(): JSX.Element {
     return <View style={styles.containerPaging}>
         <FlashList 
             data={flattenData}
-            renderItem={({item}) => <ItemPost {...item} />}
+            renderItem={({item}) => <ItemPostList post={item} /> }
             estimatedItemSize={100}
             onEndReached={loadNext}
             onEndReachedThreshold={0.3}
@@ -57,15 +55,6 @@ function Content(): JSX.Element {
 function Loading(): JSX.Element {
     return <View style={styles.containerCenter}>
         <ActivityIndicator size={'large'} />
-    </View>
-}
-
-function ItemPost(post: PostModel): JSX.Element {
-    return <View style={styles.containerPost}>
-        <Text style={styles.label} numberOfLines={2} ellipsizeMode={'tail'}>{ post.title }</Text> 
-        <SizedBox height={6} />
-        <Text style={styles.paragraph} numberOfLines={3} ellipsizeMode={'tail'}>{ post.body }</Text> 
-        <SizedBox height={6} />
     </View>
 }
 
@@ -82,17 +71,4 @@ const styles = StyleSheet.create({
     containerPaging: {
         flex: 1,
     },
-    containerPost: {
-        paddingHorizontal: 12,
-        paddingVertical: 6,
-        borderBottomColor: GREY_300,
-        borderBottomWidth: StyleSheet.hairlineWidth,
-    },
-    label: {
-        fontWeight: 'bold',
-        fontSize: 18,
-    },
-    paragraph: {
-        fontSize: 14,
-    }
 })
