@@ -1,11 +1,12 @@
 import React from 'react';
 import { FlashList } from "@shopify/flash-list";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { StyleSheet, SafeAreaView, Text, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, SafeAreaView, View, ActivityIndicator } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamsList } from './root-stack-params';
 import UsePosts from '../services/list-post-service';
 import ItemPostList from './item-post-list';
+import ItemLoadMore from './item-load-more';
 
 type listScreenProp = StackNavigationProp<RootStackParamsList, 'PagingList'>;
 const queryClient = new QueryClient();
@@ -48,6 +49,7 @@ function Content(): JSX.Element {
             estimatedItemSize={100}
             onEndReached={loadNext}
             onEndReachedThreshold={0.3}
+            ListFooterComponent={isFetchingNextPage ? < ItemLoadMore /> : null}
         />
     </View>
 }
