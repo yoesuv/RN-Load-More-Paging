@@ -2,7 +2,7 @@
   "expo": {
     "name": "RN-Load-More-Paging",
     "slug": "RN-Load-More-Paging",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -23,7 +23,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#009688"
       },
       "package": "com.yoesuv.RNLoadMorePaging"
     },
