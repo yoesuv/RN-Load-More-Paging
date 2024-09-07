@@ -1,11 +1,11 @@
 ## React Native Pagination ##
 Basic Load more/Infinite paging apps (list & grid).  
 Build from [Expo Framework](https://expo.dev/).  
-Download apk file [here](https://e.pcloud.link/publink/show?code=XZD6vWZpY7O25E7TQzK2e32qOEcbVUOu3MX)
+Download apk file [here](https://e.pcloud.link/publink/show?code=XZlC1PZrqlJGNLF2U53UO7LeY0aFFOgVb77)
 
 ```
-Node JS
-v18.17.1
+Node JS     | Java
+v18.17.1    | java 17.0.8 2023-07-18 LTS
 ```
 
 #### Screenshot ####
