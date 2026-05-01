@@ -2,7 +2,7 @@
   "expo": {
     "name": "RN-Load-More-Paging",
     "slug": "RN-Load-More-Paging",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "android.versionCode": "1",
     "ios.buildNumber": "1",
     "orientation": "portrait",
