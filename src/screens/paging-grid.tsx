@@ -23,7 +23,7 @@ export default function PagingGrid() {
   );
 }
 
-function Content(): JSX.Element {
+function Content() {
   const {
     data,
     error,
@@ -42,7 +42,7 @@ function Content(): JSX.Element {
     }
   };
 
-  if (status === "loading") {
+  if (status === "pending") {
     return <Loading />;
   }
 
@@ -52,7 +52,6 @@ function Content(): JSX.Element {
         numColumns={2}
         data={flattenData}
         renderItem={({ item }) => <ItemPostGrid post={item} />}
-        estimatedItemSize={100}
         onEndReachedThreshold={0.3}
         onEndReached={loadNext}
         ListFooterComponent={isFetchingNextPage ? <ItemLoadMore /> : null}
@@ -61,7 +60,7 @@ function Content(): JSX.Element {
   );
 }
 
-function Loading(): JSX.Element {
+function Loading() {
   return (
     <View style={styles.containerCenter}>
       <ActivityIndicator size={"large"} />
