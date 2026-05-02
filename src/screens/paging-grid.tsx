@@ -2,21 +2,20 @@ import React from "react";
 import { FlashList } from "@shopify/flash-list";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { StyleSheet, View, ActivityIndicator } from "react-native";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamsList } from "./root-stack-params";
 import UsePosts from "../services/list-post-service";
 import ItemPostGrid from "./item-post-grid";
 import ItemLoadMore from "./item-load-more";
 import { SafeAreaView } from "react-native-safe-area-context";
-
-type gridScreenProp = StackNavigationProp<RootStackParamsList, "PagingGrid">;
 
 const queryClient = new QueryClient();
 
 export default function PagingGrid() {
   return (
     <QueryClientProvider client={queryClient}>
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView
+        style={styles.container}
+        edges={["bottom", "left", "right"]}
+      >
         <Content />
       </SafeAreaView>
     </QueryClientProvider>
@@ -24,15 +23,8 @@ export default function PagingGrid() {
 }
 
 function Content() {
-  const {
-    data,
-    error,
-    fetchNextPage,
-    hasNextPage,
-    isFetching,
-    isFetchingNextPage,
-    status,
-  } = UsePosts();
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, status } =
+    UsePosts();
 
   const flattenData = data?.pages.flatMap((page) => page.data);
 
