@@ -4,7 +4,7 @@ Build from [Expo Framework](https://expo.dev/).
 
 ```
 Node JS     | Java
-v20.3.1     | java 21.0.2 2024-01-16 LTS
+v22.21.1    | java 21.0.2 2024-01-16 LTS
 ```
 
 #### Screenshot ####

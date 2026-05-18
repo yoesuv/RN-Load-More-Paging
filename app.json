@@ -3,8 +3,6 @@
     "name": "RN-Load-More-Paging",
     "slug": "RN-Load-More-Paging",
     "version": "1.0.3",
-    "android.versionCode": "1",
-    "ios.buildNumber": "1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -13,19 +11,17 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "buildNumber": "1"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#009688"
       },
-      "package": "com.yoesuv.RNLoadMorePaging"
+      "package": "com.yoesuv.RNLoadMorePaging",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
