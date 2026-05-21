@@ -1,25 +1,44 @@
-import React from 'react';
-import { Text, StyleSheet, Pressable, GestureResponderEvent } from 'react-native';
-import { GREY_500, THEME_COLOR, THEME_COLOR_700 } from '../data/colors';
+import React from "react";
+import {
+  Text,
+  StyleSheet,
+  Pressable,
+  GestureResponderEvent,
+} from "react-native";
+import { GREY_500, THEME_COLOR, THEME_COLOR_700 } from "../data/colors";
 
 interface ButtonProps {
   onPress: (event: GestureResponderEvent) => void;
   title?: String;
-  disabled?: boolean,
+  disabled?: boolean;
 }
 
-const AppButton: React.FC<ButtonProps> = ({onPress, title = 'Save', disabled = false}) => {
-  return <Pressable disabled={disabled} style={({ pressed }) => [
-      disabled ? styles.buttonDisabled : pressed ? styles.buttonPress :styles.button
-    ]} onPress={onPress}>
+const AppButton: React.FC<ButtonProps> = ({
+  onPress,
+  title = "Save",
+  disabled = false,
+}) => {
+  return (
+    <Pressable
+      disabled={disabled}
+      style={({ pressed }) => [
+        disabled
+          ? styles.buttonDisabled
+          : pressed
+            ? styles.buttonPress
+            : styles.button,
+      ]}
+      onPress={onPress}
+    >
       <Text style={styles.text}>{title}</Text>
-  </Pressable>
-}
+    </Pressable>
+  );
+};
 
 const styles = StyleSheet.create({
   button: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 8,
@@ -27,8 +46,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   buttonPress: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 8,
@@ -36,8 +55,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   buttonDisabled: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     paddingVertical: 12,
     paddingHorizontal: 32,
     borderRadius: 8,
@@ -47,9 +66,9 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     lineHeight: 21,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     letterSpacing: 0.25,
-    color: 'white',
+    color: "white",
   },
 });
 
